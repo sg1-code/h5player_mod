@@ -15,10 +15,6 @@ The script allows keyboard shortcuts for full course control, supporting functio
 
 Moreover, it also offers the ability to fast forward short pre/post rolls, speed up learning from online tutorials/educational videos, and privately store offline audio and video files.  
 
-<a href="https://h5player.anzz.top/assets/img/h5player_ui.jpg" target="_blank">
-  <img src="https://h5player.anzz.top/assets/img/h5player_ui.jpg" alt="h5player-ui" />
-</a>
-
 ## Application Scenarios
 
 - Endless speed control: control the rhythm freely, no matter how fast or slow.
