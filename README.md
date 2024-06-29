@@ -154,8 +154,6 @@ Below is a list of some common websites for easy click testing:
 
 Please show your appreciation to the script author.  
 
-[How much in donations does an open-source work with a million installations receive in a year?](https://h5player.anzz.top/home/aboutDonate)  
-
 PayPal: [paypal.me/BlazeLiu](https://paypal.me/BlazeLiu)  
 
 <p>
