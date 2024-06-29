@@ -1,13 +1,10 @@
 # h5player for tampermonkey
 
-> English  |  **[中文文档](./README-zh.md)**
-
 Web Player Enhancement Script  
 
 - Official Website: [h5player.anzz.top](https://h5player.anzz.top)  
-- GitHub: [github.com/xxxily/h5player](https://github.com/xxxily/h5player)  
-- GreasyFork: [greasyfork.org/scripts/381682](https://greasyfork.org/scripts/381682)
-- One-Click Installation: [h5player.anzz.top/h5player.user.js](https://update.greasyfork.org/scripts/381682/HTML5%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC.user.js)
+- Official GitHub: [github.com/xxxily/h5player](https://github.com/xxxily/h5player)
+- This mod: [github.com/sami-gllogjani/h5player_mod](https://github.com/sami-gllogjani/h5player_mod)
 
 <br />
 
