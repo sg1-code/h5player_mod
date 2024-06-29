@@ -6,7 +6,6 @@ Web Player Enhancement Script
 - Official GitHub: [github.com/xxxily/h5player](https://github.com/xxxily/h5player)
 - This mod: [github.com/sami-gllogjani/h5player_mod](https://github.com/sami-gllogjani/h5player_mod)
 
-<br />
 
 ## Introduction
 
