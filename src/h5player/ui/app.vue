@@ -1,7 +1,7 @@
 <template>
   <div class="h5player-ui-wrap">
     <el-drawer
-      title="设置"
+      title="set up"
       :size="String('600px')"
       :modal-append-to-body="Boolean(false)"
       :visible.sync="appStatus.openSettingPanel"
@@ -11,37 +11,37 @@
       <el-collapse accordion>
         <el-collapse-item>
           <template slot="title">
-            播放设置
+            Playback settings
             <!--<i class="header-icon el-icon-info" />-->
           </template>
           <el-form
             ref="form"
             label-width="120px"
           >
-            <el-form-item label="自动播放：">
+            <el-form-item label="Autoplay:">
               <el-switch
                 v-model="autoPlay"
-                name="'自动播放'"
+                name="'Autoplay'"
               />
             </el-form-item>
 
-            <el-form-item label="播放速度：">
-              <el-input placeholder="请输入内容" />
+            <el-form-item label="Play speed:">
+              <el-input placeholder="Please enter content" />
             </el-form-item>
           </el-form>
         </el-collapse-item>
-        <el-collapse-item title="快捷键">
-          <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-          <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+        <el-collapse-item title="shortcut key">
+          <div>Control feedback: Allow users to clearly perceive their operations through interface style and interactive effects.</div>
+          <div>Page feedback: After operation, the current status is clearly displayed through changes in page elements.</div>
         </el-collapse-item>
-        <el-collapse-item title="其他配置项">
-          <div>简化流程：设计简洁直观的操作流程；</div>
-          <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-          <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+        <el-collapse-item title="Other configuration items">
+          <div>Simplify the process: Design a simple and intuitive operation process.</div>
+          <div>The language is clearly expressed and the meaning is clear, allowing users to quickly understand and make decisions.</div>
+          <div>Help users identify: The interface is simple and straightforward, allowing users to quickly identify rather than recall, reducing the user's memory burden.</div>
         </el-collapse-item>
-        <el-collapse-item title="关于">
-          <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-          <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+        <el-collapse-item title="about">
+          <div>User decision-making: User operation suggestions or safety tips can be given according to the scenario, but it cannot make decisions on behalf of the user.</div>
+          <div>Controllable results: Users can perform operations freely, including undoing, rolling back, and terminating current operations.</div>
         </el-collapse-item>
       </el-collapse>
     </el-drawer>
@@ -63,7 +63,7 @@ export default {
   methods: {
     handleClose (done) {
       done()
-      // this.$confirm('确认关闭？')
+      // this.$confirm('Confirm to close?')
       //   .then(_ => {
       //     done()
       //   })

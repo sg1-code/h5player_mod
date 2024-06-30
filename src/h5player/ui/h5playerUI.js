@@ -34,7 +34,7 @@ function removePopupWrapByElement (element) {
   if (popupWrapId) { removePopupWrapById(popupWrapId) }
 }
 
-/* 遍历popupWrapObjs，如果popupWrapObjs中的element元素的offsetParent为null，则移除掉 */
+/* Traverse popupWrapObjs, if the offsetParent of the element element in popupWrapObjs is null, remove it */
 function cleanPopupWrap () {
   const popupWrapIds = Object.keys(popupWrapObjs)
   popupWrapIds.forEach(popupWrapId => {
@@ -66,7 +66,7 @@ const h5playerUI = {
   async init () {
     debug.log('h5playerUI init')
 
-    /* 插入组件相关的样式 */
+    /* Insert component-related styles */
     document.adoptedStyleSheets = [...document.adoptedStyleSheets, shoelaceCss]
   },
 
@@ -87,17 +87,17 @@ const h5playerUI = {
   popup (element, h5Player) {
     if (this.__disableGUITemporarily__ || element.__disableGUITemporarily__) { return false }
 
-    /* 如果element元素的宽高比大于2.5，说明可能为视频背景，则也不显示popup */
+    /* If the aspect ratio of the element element is greater than 2.5, it may be a video background, and the popup will not be displayed */
     if (element.videoWidth / element.videoHeight > 2.5) { return false }
 
-    /* 防止popup渲染过于频繁 */
+    /* Prevent pop-ups from being rendered too frequently */
     if (this.lastRenderedPopupTime && Date.now() - this.lastRenderedPopupTime < 100) {
       return false
     } else {
       this.lastRenderedPopupTime = Date.now()
     }
 
-    /* 防止popup死循环渲染 */
+    /* Prevent pop-up infinite loop rendering */
     if (element.__popupRenderedCount__ && element.__popupRenderedCount__ > 15) {
       return false
     } else {
@@ -150,13 +150,13 @@ const h5playerUI = {
     const popup = popupWrap.querySelector('sl-popup')
 
     /**
-     * 判断popup初始化是否异常，油管上使用了custom-elements-es5-adapter.js，会导致popup异常，故有此判断
-     * 例如：https://www.youtube.com/watch?v=jsb-5H_hy0M
-     * 例如：https://www.youtube.com/watch?v=-2xb7rGCi2k
+     * Determine whether the popup initialization is abnormal. Custom elements es5 adapter.js is used on the oil pipe, which will cause the popup to be abnormal, so this judgment is made.
+     * For example：https://www.youtube.com/watch?v=jsb-5H_hy0M
+     * For example：https://www.youtube.com/watch?v=-2xb7rGCi2k
      */
     function checkPopupUpdateComplete () {
       if (!popup || !popup.updateComplete || !popup.updateComplete.then) {
-        // debug.error('[h5playerUI][popup][updateComplete], 组件初始化异常', popup, element)
+        // debug.error('[h5playerUI][popup][updateComplete], Component initialization exception', popup, element)
         element.removeAttribute('data-popup-wrap-id')
         popupWrap.remove()
         delete popupWrapObjs[popupWrapId]
@@ -166,7 +166,7 @@ const h5playerUI = {
       return true
     }
 
-    /* 确保popup已经被渲染 */
+    /* Make sure the popup has been rendered */
     customElements.whenDefined('sl-popup').then(() => {
       if (!checkPopupUpdateComplete()) {
         return false
@@ -180,7 +180,7 @@ const h5playerUI = {
       })
     })
 
-    /* 重新渲染h5p-action-mod对应的菜单，以便更新菜单状态 */
+    /* Re-render the menu corresponding to the h5p action mod to update the menu status */
     function reRenderMenuMod () {
       const menuWrap = popupWrap.querySelector('.h5player-popup-content .h5p-menu-wrap')
       const actionMod = popupWrap.querySelector('.h5p-action-mod')
@@ -190,14 +190,14 @@ const h5playerUI = {
         const newMenuTemplate = createMenuTemplate(menuConfigPreprocess(menuConfig, element))
         parseHTML(newMenuTemplate, menuWrap)
 
-        /* 图标加载失败时，移除图标元素 */
+        /* When the icon loading fails, remove the icon element */
         const slIcons = popupWrap.querySelectorAll('sl-icon')
         slIcons && slIcons.forEach(slIcon => {
           slIcon.addEventListener('sl-error', (event) => {
             const parent = event.target.parentElement
             event.target.remove()
 
-            /* 改为只显示文字标题 */
+            /* Show only text title instead */
             if (parent.getAttribute('data-title')) {
               parent.innerText = parent.getAttribute('data-title')
             }
@@ -208,10 +208,10 @@ const h5playerUI = {
       }
     }
 
-    /* 油管首次渲染会莫名其妙的出错，所以此处延迟一段时间重新渲染一次菜单 */
+    /* The first rendering of YouTube will cause inexplicable errors, so here we will delay the rendering for a while and re-render the menu again.*/
     setTimeout(() => { reRenderMenuMod() }, 400)
 
-    /* 重新渲染h5p-recommend-mod对应的推荐模块，如果位置不够则对隐藏该模块 */
+    /* Re-render the recommended module corresponding to the h5p recommend mod. If the location is not enough, the module will be hidden. */
     function reRenderRecommendMod () {
       const recommendWrap = popupWrap.querySelector('.h5player-popup-content .h5p-recommend-wrap')
       const recommendMod = popupWrap.querySelector('.h5player-popup-content .h5p-recommend-wrap>div')
@@ -231,12 +231,12 @@ const h5playerUI = {
     const alwaysShowUIBar = configManager.getGlobalStorage('ui.alwaysShow')
 
     /**
-     * 鼠标移动到popupWrap上时增加fullActiveClass的样式类，移出一段时间后再移除fullActiveClass的样式类
-     * 用于防止鼠标移动到popupWrap上时popupWrap被快速隐藏，以提示操作体验
+     *Add the style class of fullActiveClass when the mouse moves to the popupWrap, and then remove the style class of fullActiveClass after moving the mouse for a period of time.
+     *Used to prevent the popupWrap from being quickly hidden when the mouse moves over the popupWrap to prompt the operating experience
      */
     let mouseleaveTimer = null
     popupWrap.addEventListener('mouseenter', () => {
-      /* 元素比例异常，不显示popup */
+      /* The element ratio is abnormal and the popup is not displayed */
       if (element.videoWidth / element.videoHeight > 2.5) {
         element.__disableGUITemporarily__ = true
         removePopupWrapByElement(element)
@@ -261,7 +261,7 @@ const h5playerUI = {
           !alwaysShowUIBar && !element.paused && popupWrap.classList.remove(activeClass)
           !alwaysShowUIBar && !element.paused && popupWrap.classList.remove(fullActiveClass)
 
-          /* 关闭popupWrap中的所有sl-dropdown */
+          /* Close all sl-dropdown in popupWrap */
           const dropdowns = popupWrap.querySelectorAll('sl-dropdown')
           dropdowns.forEach(dropdown => {
             dropdown._open_ = false
@@ -327,9 +327,9 @@ const h5playerUI = {
       }
     }
 
-    /* 移动端下如果注册了mousemove会导致click没法触发，或者导致事件相互干扰，没法唤起sl-dropdown */
+    /* If mousemove is registered on the mobile terminal, click will not be triggered, or events will interfere with each other, and sl-dropdown will not be evoked */
     if (!device.isMobile()) {
-      /* 鼠标在popupWrap上移动时，如果检测到isOutOfDocument(element)也移除fullActiveClass的样式类，注意需加上debounce */
+      /* When the mouse moves on the popupWrap, if isOutOfDocument(element) is detected, the fullActiveClass style class will also be removed. Note that debounce must be added */
       let lastCheckIsOutOfDocumentTime = Date.now()
       popupWrap.addEventListener('mousemove', (event) => {
         const now = Date.now()
@@ -411,7 +411,7 @@ const h5playerUI = {
       }
     })
 
-    /* element切换播放状态时，如果是播放状态，则隐藏popup，否则显示popup */
+    /* When the element switches the playback state, if it is in the playback state, the popup will be hidden, otherwise the popup will be displayed */
     element.addEventListener('play', () => {
       if (alwaysShowUIBar) {
         popupWrap.classList.add(activeClass)
@@ -456,7 +456,7 @@ const h5playerUI = {
       cleanPopupWrap()
     })
 
-    /* element的播放进度发生变化时，执行一次popup.reposition() */
+    /* When the playback progress of element changes, execute popup.reposition() */
     let lastTimeupdateTime = Date.now()
     element.addEventListener('timeupdate', () => {
       const now = Date.now()
@@ -466,7 +466,7 @@ const h5playerUI = {
       }
     })
 
-    /* 尝试清除popupWrapObjs中的无效元素 */
+   /*Try to clear invalid elements in popupWrapObjs */
     cleanPopupWrap()
 
     // debug.log('[h5playerUI][popup]', popup, popupWrap, element)

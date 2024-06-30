@@ -1,6 +1,6 @@
 /*!
  * @name         index.js
- * @description  ui界面
+ * @description  ui
  * @version      0.0.1
  * @author       xxxily
  * @date         2020/4/13 am 10:12
@@ -55,7 +55,7 @@ const h5playerUi = {
     const wrap = document.createElement('div')
     wrap.id = 'h5-player-app'
     if (uiRoot) {
-      /* 注入element css */
+      /* Inject element css */
       if (window.GM_getResourceText) {
         loadCSSText(window.GM_getResourceText('elementUiCss'), 'elementUiCss', uiRoot)
       } else {
@@ -79,9 +79,9 @@ const h5playerUi = {
     window['h5playerUi-app'] = app
 
     /**
-     * 动态插入所需的css
-     * 使用document._renderH5playeruiCss_的原因见webpack的style-loader配置
-     * bin/webpack/utils.js 30-50
+     *Dynamically insert the required css
+     *For the reason of using document._renderH5playeruiCss_, see the style-loader configuration of webpack
+     *bin/webpack/utils.js 30-50
      */
     document._renderH5playeruiCss_ && document._renderH5playeruiCss_(elements => {
       elements = Array.isArray(elements) ? elements : [elements]
@@ -94,7 +94,7 @@ const h5playerUi = {
       })
     })
 
-    /* 插入到html文档中 */
+    /*Insert into html document */
     document.body.appendChild(ui)
   },
 
@@ -103,7 +103,7 @@ const h5playerUi = {
   }
 }
 
-/* 必须使用shadow DOM 否则界面很容易被其它样式污染 */
+/* Shadow DOM must be used, otherwise the interface will be easily contaminated by other styles */
 h5playerUi.init(true)
 
 export default h5playerUi

@@ -497,7 +497,7 @@ sl-drawer::part(base) {
   border-radius: 6px 6px 0 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 
-  /* 灰色向下的过度阴影 */
+  /* Overshadowed downward gray */
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
 
   display: flex;
@@ -607,7 +607,7 @@ sl-drawer::part(base) {
   display: inline-block;
   word-break: keep-all;
   white-space: nowrap;
-  /* 无限循环滚动的动画效果 */
+  /*Infinite scrolling animation effect*/
   /* padding-left: 100%; */
   /* animation: text-marquee 15s linear infinite; */
 }

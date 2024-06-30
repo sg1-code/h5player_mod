@@ -6,41 +6,40 @@ import {
   setValByPath
 } from '../libs/utils/index'
 
-/* 针对具体域名的局部配置，不同网站可以有自己的相应配置 */
+/* For local configuration of specific domain names, different websites can have their own corresponding configurations */
 const defConfig = {
   video: {
     autoPlay: true,
     playbackRate: 1,
 
-    /**
-     * 对音量进行统一管理容易产生误判，例如本身静音播放的广告视频或处于未激活TAB的背景视频
-     * 所以应尽量使用网站默认的初始音量设置
+    /*Unified management of volume can easily lead to misjudgments, such as advertising videos that play silently or background videos with inactive TAB.
+     *Therefore, you should try to use the default initial volume setting of the website
      */
     volume: 1,
 
-    /* transform样式规则 */
+    /* transform style rules */
     transform: {
-    /* 放大缩小系数 */
+    /* Zoom factor */
       scale: 1,
 
-      /* 水平位移参数 */
+      /* Horizontal displacement */
       translate: {
         x: 0,
         y: 0
       },
 
-      /* 旋转角度 */
+      /* Rotation */
       rotate: 0,
 
-      /* 水平镜像翻转, 0 或 180 */
+      /* Horizontal flip, 0 or 180 */
       rotateY: 0,
-      /* 垂直镜像翻转, 0 或 180 */
+      /* Vertical flip, 0 or 180 */
       rotateX: 0
     }
   },
 
   enhance: {
-    /* 不禁用默认的调速逻辑，则在多个视频切换时，速度很容易被重置，所以该选项默认开启 */
+    /* If the default speed adjustment logic is not disabled, the speed will be easily reset when switching between multiple videos, so this option is enabled by default */
     blockSetPlaybackRate: true,
 
     blockSetCurrentTime: null,
@@ -50,12 +49,12 @@ const defConfig = {
   hotkeys: {},
 
   /**
-   * TODO 控制是否开启/关闭调试模式，功能带补充
+   * TODO controls whether to turn on/off the debugging mode, with supplementary functions
    */
   debug: true
 }
 
-/* 全局配置，优先级低于defConfig */
+/* Global configuration, priority lower than defConfig */
 const defGlobalConfig = {
   video: {
     playbackRate: 1,
@@ -64,7 +63,7 @@ const defGlobalConfig = {
   hotkeys: {},
 
   enhance: {
-    /* 不禁用默认的调速逻辑，则在多个视频切换时，速度很容易被重置，所以该选项默认开启 */
+    /* If the default speed adjustment logic is not disabled, the speed will be easily reset when switching between multiple videos, so this option is enabled by default */
     blockSetPlaybackRate: true,
 
     blockSetCurrentTime: false,
@@ -72,7 +71,7 @@ const defGlobalConfig = {
   },
 
   /**
-   * TODO 控制是否开启/关闭调试模式，功能带补充
+   * TODO controls whether to turn on/off the debugging mode, with supplementary functions
    */
   debug: true
 }
@@ -94,20 +93,20 @@ const globalConfig = monkeyStorageProxy('_h5playerGlobalConfig_', {
   storageEventListener: false
 })
 
-/* 修复配置项状态管理器的配置项同步异常问题 */
+/* Fix the configuration item synchronization exception problem of the configuration item status manager */
 fixState(config, defConfig)
 fixState(globalConfig, defGlobalConfig)
 
 /**
- * 根据本域配置和全局配置，在localState优先的前提下，找出最终应该应用的配置结果
- * @param statePath {string} -必选 配置的路径名，例如：'enhance.blockSetVolume'
- * @returns
+ *Based on the local configuration and global configuration, and on the premise of giving priority to localState, find out the final configuration results that should be applied
+ *@param statePath {string} -required The configured path name, for example: 'enhance.blockSetVolume'
+ *@returns
  */
 function getConfigState (statePath) {
   const localState = getValByPath(config, statePath)
   const globalState = getValByPath(globalConfig, statePath)
 
-  /* localState优先，如果localState没有定义，则使用globalState */
+  /* localState takes precedence, if localState is not defined, globalState is used */
   if (typeof localState === 'undefined' || localState === null) {
     return globalState
   } else {
@@ -116,16 +115,16 @@ function getConfigState (statePath) {
 }
 
 /**
- * 根据本域配置和全局配置，在localState优先的前提下，将值设置给localState还是globalState
- * @param statePath {String} -必选 配置的路径名，例如：'enhance.blockSetVolume'
- * @param val {Any} -必选 要设置的任意值
- * @returns {Boolean} 返回true表示设置成功
+ *According to the local configuration and global configuration, on the premise that localState takes precedence, set the value to localState or globalState.
+ *@param statePath {String} -required The configured path name, for example: 'enhance.blockSetVolume'
+ *@param val {Any} -required Any value to be set
+ *@returns {Boolean} Returns true to indicate successful setting
  */
 function setConfigState (statePath, val) {
   const localState = getValByPath(config, statePath)
   const globalState = getValByPath(globalConfig, statePath)
 
-  /* localState优先，如果localState没有定义，则说明应该设置globalState */
+  /* localState takes precedence. If localState is not defined, globalState should be set */
   if (typeof localState === 'undefined' || localState === null) {
     return setValByPath(globalState, statePath, val)
   } else {

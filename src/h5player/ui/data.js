@@ -1,7 +1,7 @@
 const appStatus = {
   openSettingPanel: true,
   setting: {
-    /* 在所有页面都运行插件脚本 */
+    /* Run plugin script on all pages */
     initOnPage: 'all',
     language: 'en',
     autoPlay: false,

@@ -4,7 +4,7 @@ export default {
       '@babel/preset-env',
       {
         targets: {
-          /* 49是个分界线，const输出不再转换成var */
+          /* 49 is a dividing line, const output is no longer converted to var*/
           // chrome: '49',
           chrome: '52'
         },
@@ -14,7 +14,7 @@ export default {
     ]
   ],
   plugins: [
-    // 使用了@babel/preset-env的usage就没必要再定义@babel/plugin-transform-runtime插件
+    // If you use the usage of @babel/preset-env, there is no need to define the @babel/plugin-transform-runtime plug-in.
     // '@babel/plugin-transform-runtime'
   ]
 }

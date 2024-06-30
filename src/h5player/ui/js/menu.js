@@ -540,7 +540,7 @@ export const menuConfig = [
   }
 ]
 
-/* menuConfig预处理函数，根据指定的参考dom元素，通过判断元素的宽度来决定是否只显示菜单的图标，以节省展示位置 */
+/* The Menu config preprocessing function determines whether to display only the menu icon based on the specified reference dom element by judging the width of the element to save placement. */
 export function menuConfigPreprocess (menuConfig, refDom) {
   const refWidth = refDom.offsetWidth
   const iconOnly = refWidth < 500
@@ -557,7 +557,7 @@ export function menuConfigPreprocess (menuConfig, refDom) {
   })
 }
 
-/* 写个函数，支持将menuConfig.dropdownMenu的数据构建成sl-menu组件的template */
+/* Write a function to support constructing the data of menu config.dropdown menu into the template of sl menu component */
 export function convertDropdownMenuToTemplate (dropdownMenu, isRootMenu = true) {
   const menuItems = dropdownMenu.map(item => {
     if (item.disabled) return ''
@@ -591,7 +591,7 @@ export function convertDropdownMenuToTemplate (dropdownMenu, isRootMenu = true) 
   return isRootMenu ? `<sl-menu>${menuItems}</sl-menu>` : menuItems
 }
 
-/* 写一个函数可以将menuConfig转换成template进行输出 */
+/* Write a function to convert menu config into template for output */
 export function convertMenuConfigToTemplate (menuConfig) {
   return `
   <div class="h5p-action-mod">
@@ -625,7 +625,7 @@ export function convertMenuConfigToTemplate (menuConfig) {
           `
         }
       }).join('')
-    } 
+    }
   </div>
   `
 }
@@ -641,34 +641,18 @@ export function createLogoModTemplate () {
 
 const defaultRecommendList = [
   {
-    title: '【h5player】使用手册',
+    title: '【h5player】User Manual',
     url: 'https://u.anzz.top/h5pmanual',
     priority: 99,
-    i18n: {
-      en: {
-        title: '【h5player】User Manual'
-      }
-    }
   },
   {
-    title: '【h5player】音视频一键合并工具，无需二次编码',
-    desc: '将h5player下载到的音视频文件自动合并成一个文件，不经过二次编码，可快速合并',
+    title: '【h5player】Audio and video merge tool, no secondary coding required',
+    desc: 'Automatically merge the audio and video files downloaded by h5player into one file without secondary coding, which can be quickly merged',
     url: 'https://u.anzz.top/ffmpegscript',
-    i18n: {
-      en: {
-        title: '【h5player】Audio and video merge tool, no secondary coding required',
-        desc: 'Automatically merge the audio and video files downloaded by h5player into one file without secondary coding, which can be quickly merged'
-      }
-    }
   },
   {
-    title: '【Hello-AI】抢走你工作的不是AI，而是掌握使用AI工具的人',
+    title: '【Hello-AI】It\'s not AI that takes away your job, but the person who knows how to use AI tools',
     url: 'https://u.anzz.top/ai',
-    i18n: {
-      en: {
-        title: '【Hello-AI】It\'s not AI that takes away your job, but the person who knows how to use AI tools'
-      }
-    }
   }
 ]
 
@@ -680,12 +664,12 @@ export function createRecommendModTemplate (refDom) {
   recommendList = recommendList.filter(item => !item.disabled)
 
   const curLang = i18n.language() || ''
-  /* 兼容各种可能的语言配置写法 */
+  /* Compatible with various possible language configuration writing methods */
   const curLang2 = curLang.replace('-', '')
   const curLang3 = curLang.replace('-', '_')
   const curLang4 = curLang.split('-')[0]
 
-  /* 根据当前的language和recommendList的languages配置过滤出符合当前语言的recommendList */
+  /* Filter out the recommended list that matches the current language based on the current language and the languages ​​configuration of the recommended list. */
   recommendList = recommendList.filter(item => {
     const lang = item.lang || item.language || item.languages
     if (lang) {
@@ -697,10 +681,10 @@ export function createRecommendModTemplate (refDom) {
 
   if (!recommendList.length) { return '' }
 
-  /* 从recommendList里随机取5条数据，多余的不予以展示 */
+  /* Randomly select 5 pieces of data from the recommended list, and the excess will not be displayed. */
   if (recommendList.length > 5) { recommendList = recommendList.sort(() => Math.random() - 0.5).slice(0, 5) }
 
-  /* 根据recommendList里的priority字段进行排序，priority值越大越靠前 */
+  /* Sort according to the priority field in the recommendation list. The larger the priority value, the higher it is. */
   recommendList = recommendList.sort((a, b) => (b.priority || 0) - (a.priority || 0))
 
   const recommendHtml = recommendList.map(item => {
@@ -724,8 +708,8 @@ export function createRecommendModTemplate (refDom) {
 }
 
 /**
- * 注册Recommend切换逻辑，每4s检测一次当前哪个h5p-recommend-item上有h5p-recommend-item__active，然后将h5p-recommend-item__active切换到下一个元素，如此往复
- * 当鼠标移动到recommendWrap的时候停止切换，移开后继续切换
+ * Register Recommend switching logic, detect which h5p-recommend-item currently has h5p-recommend-item__active every 4 seconds, and then switch h5p-recommend-item__active to the next element, and so on.
+ * Stop switching when the mouse moves to recommendedWrap, and continue switching after moving away.
  */
 export function registerRecommendModToggle (recommendWrap, reRender) {
   if (!reRender && (!recommendWrap || recommendWrap.__h5pRecommendModRegistered__)) { return }
@@ -760,14 +744,14 @@ export function registerRecommendModToggle (recommendWrap, reRender) {
 }
 
 /**
- * 通过事件委托的方式处理菜单点击事件，减少事件绑定，提升性能
- * @param { Event } event -必选 事件对象
+ * Handle menu click events through event delegation to reduce event binding and improve performance
+ * @param { Event } event -required event object
  */
 export function menuActionHandler (obj) {
   const { event, h5Player, h5playerUI, videoElement, popup, actionCallback } = obj
   const target = event.target
 
-  /* 根据target查找是否包含data-action属性，注意这里可能需要使用closest来向上查找 */
+  /* Find whether the data action attribute is included according to the target. Note that you may need to use closest to search upwards.*/
   const actionDOM = target.closest('.h5p-menu-action')
   if (!actionDOM) {
     debug.log('[menuActionHandler]', '未找到actionDOM', event.target)

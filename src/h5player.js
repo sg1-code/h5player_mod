@@ -1,21 +1,20 @@
 // ==UserScript==
-// @name         HTML5播放器增强插件 - 修订版
+// @name         HTML5 Player - Moded
 // @namespace    https://github.com/xxxily/h5player
 // @homepage     https://github.com/xxxily/h5player
 // @version      2.5.1
-// @description  对HTML5播放器的功能进行增强，支持所有使用H5进行视频播放的网站，快捷键仿照Potplayer的快捷键布局，实现调节亮度，饱和度，对比度，速度等功能。
-// @author       ankvps
+// @description  Enhances the functions of the HTML5 player to support all websites that use H5 for video playback. The shortcut keys imitate the Potplayer shortcut key layout to adjust brightness, saturation, contrast, speed and other functions.
 // @match        http://*/*
 // @match        https://*/*
 // @run-at       document-start
 // @grant        GM_addStyle
 // ==/UserScript==
 
-/* 元素全屏API，同时兼容网页全屏 */
+/* Element full screen API, also compatible with web page full screen */
 class FullScreen {
   constructor (dom, pageMode) {
     this.dom = dom
-    // 默认全屏模式，如果传入pageMode则表示进行的是页面全屏操作
+    //Default full-screen mode. If pageMode is passed in, it means that the page is in full-screen operation.
     this.pageMode = pageMode || false
     const fullPageStyle = `
       ._webfullscreen_ {
@@ -139,18 +138,18 @@ class FullScreen {
 
 (function () {
   /**
-   * 任务配置中心 Task Control Center
-   * 用于配置所有无法进行通用处理的任务，如不同网站的全屏方式不一样，必须调用网站本身的全屏逻辑，才能确保字幕、弹幕等正常工作
-   * */
+   *Task Control Center Task Control Center
+   *Used to configure all tasks that cannot be processed universally. For example, different websites have different full-screen methods. The full-screen logic of the website itself must be called to ensure that subtitles, barrages, etc. work properly.
+   **/
   const TCC = {
     /**
-     * 配置示例
-     * 父级键名对应的是一级域名，
-     * 子级键名对应的相关功能名称，键值对应的该功能要触发的点击选择器或者要调用的相关函数
-     * 所有子级的键值都支持使用选择器触发或函数调用
-     * 配置了子级的则使用子级配置逻辑进行操作，否则使用默认逻辑
-     * 注意：include，exclude这两个子级键名除外，这两个是用来进行url范围匹配的
-     * */
+     *Configuration example
+     *The parent key name corresponds to the first-level domain name.
+     *The related function name corresponding to the child key name, the click selector to be triggered by the key value or the related function to be called.
+     *All child key values ​​support triggering using selectors or function calls
+     *If a child is configured, use the child configuration logic to operate, otherwise use the default logic
+     *Note: Except for the two child key names include and exclude, these two are used for URL range matching.
+     **/
     'demo.demo': {
       fullScreen: '.fullscreen-btn',
       exitFullScreen: '.exit-fullscreen-btn',
@@ -164,9 +163,9 @@ class FullScreen {
       currentTime: function () {},
       addCurrentTime: '.add-currenttime',
       subtractCurrentTime: '.subtract-currenttime',
-      // 自定义快捷键的执行方式，如果是组合键，必须是 ctrl-->shift-->alt 这样的顺序，没有可以忽略，键名必须全小写
+      //Customize the execution method of shortcut keys. If it is a key combination, it must be in the order of ctrl-->shift-->alt. If there is no shortcut key, it can be ignored. The key name must be all lowercase.
       shortcuts: {
-        /* 注册要执行自定义回调操作的快捷键 */
+        /* Register shortcut keys to perform custom callback operations */
         register: [
           'ctrl+shift+alt+c',
           'ctrl+shift+c',
@@ -174,15 +173,15 @@ class FullScreen {
           'ctrl+c',
           'c'
         ],
-        /* 自定义快捷键的回调操作 */
+        /* Callback operation of custom shortcut keys */
         callback: function (h5Player, taskConf, data) {
           const { event, player } = data
           console.log(event, player)
         }
       },
-      /* 当前域名下需包含的路径信息，默认整个域名下所有路径可用 必须是正则 */
+      /* The path information that needs to be included in the current domain name. By default, all paths in the entire domain name are available and must be regular */
       include: /^.*/,
-      /* 当前域名下需排除的路径信息，默认不排除任何路径 必须是正则 */
+      /* Path information that needs to be excluded under the current domain name. By default, no path is excluded. It must be regular */
       exclude: /\t/
     },
     'youtube.com': {
@@ -209,9 +208,9 @@ class FullScreen {
       fullScreen: '.iqp-btn-fullscreen',
       webFullScreen: '.iqp-btn-webscreen',
       init: function (h5Player, taskConf) {
-        // 隐藏水印
+        // Hide watermark
         hideDom('.iqp-logo-box')
-        // 移除暂停广告
+        // Remove paused ads
         GM_addStyle(`
           div[templatetype="common_pause"]{ display:none }
         `)
@@ -220,7 +219,7 @@ class FullScreen {
     'youku.com': {
       fullScreen: '.control-fullscreen-icon',
       init: function (h5Player, taskConf) {
-        // 隐藏水印
+        // Hide watermark
         hideDom('.youku-layer-logo')
       }
     },

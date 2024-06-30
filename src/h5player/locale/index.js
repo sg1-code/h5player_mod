@@ -8,21 +8,21 @@ Vue.use(VueI18n)
 
 const defLang = 'zh-CN'
 
-/* 定义当前支持的语言列表 */
+/* Define list of supported languages */
 const langSupport = [
   defLang,
   'en-US'
 ]
 
-/* 前缀映射表，后面增加语言的时候要维护这个列表 */
+/* Language prefix mapping table. */
 const langMap = {
   zh: defLang,
   en: 'en-US'
 }
 
 /**
- * 根据提供的lang信息获取当前所能支持的最佳语言信息
- * @param lang （string） -必选 当前所能提供的语言信息
+ * Obtain the best language information currently supported based on the provided
+ * @param lang (string) -required The language information currently provided
  */
 function getLangSupport (lang) {
   let result = lang || defLang
@@ -37,7 +37,7 @@ function getLangSupport (lang) {
 
 const loadedLanguages = [defLang]
 
-/* 整个应用的i18n实例 */
+/* A i18n instance for the entire application */
 const i18n = new VueI18n({
   locale: defLang,
   fallbackLocale: defLang,
@@ -46,12 +46,12 @@ const i18n = new VueI18n({
   }
 })
 
-/* 获取客户端当前的语言环境 */
+/* Get client locale to determnine language */
 function getClientLang () {
   return navigator.languages ? navigator.languages[0] : navigator.language
 }
 
-/* 设置当前应用的语言标识 */
+/* Set the language identifier */
 function setI18nLanguage (lang) {
   i18n.locale = lang
   axios.defaults.headers['Accept-Language'] = lang
@@ -60,9 +60,9 @@ function setI18nLanguage (lang) {
 }
 
 /**
- * 异步加载语言包并应用加载到的语言包
- * @param lang (string) -必选 语言包文件名
- * @param messages (object) -可选 要进行合并的自定义语言信息数据
+ * Asynchronously load and apply the language pack
+ * @param lang (string) -required language pack
+ * @param messages (object) -optional custom language
  * @returns {Promise<any>|Promise<T | never>}
  */
 function loadLanguageAsync (lang, messages) {
@@ -80,7 +80,7 @@ function loadLanguageAsync (lang, messages) {
   return Promise.resolve(lang)
 }
 
-/* 增加loadLanguageAsync的别名 */
+/* Add alias for load language async */
 const use = loadLanguageAsync
 
 export {

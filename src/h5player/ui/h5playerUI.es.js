@@ -3924,99 +3924,45 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
 
   const faq = [
     {
-      title: '倍速刷课为啥学习进度没变化',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E5%80%8D%E9%80%9F%E5%88%B7%E8%AF%BE%E4%B8%BA%E5%95%A5%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%B2%A1%E5%8F%98%E5%8C%96'
-    },
-    {
-      title: '百度网盘视频无法倍速播放',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE'
-    },
-    {
-      title: '倍速播放卡顿、无进度、音画不同步',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE%E5%8D%A1%E9%A1%BF%E3%80%81%E6%97%A0%E8%BF%9B%E5%BA%A6%E3%80%81%E9%9F%B3%E7%94%BB%E4%B8%8D%E5%90%8C%E6%AD%A5'
-    },
-    {
       title: 'Playback is stuttering, has no progress, or is out of sync',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#playback-is-stuttering-has-no-progress-or-is-out-of-sync'
-    },
-    {
-      title: '如何支持本地视频文件的倍速播放',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E6%9C%AC%E5%9C%B0%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E7%9A%84%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE'
     },
     {
       title: 'How can I support speed playback for local video files?',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#how-can-i-support-speed-playback-for-local-video-files'
-    },
-    {
-      title: '开启插件后网站自身的调速失效了',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E5%BC%80%E5%90%AF%E6%8F%92%E4%BB%B6%E5%90%8E%E7%BD%91%E7%AB%99%E8%87%AA%E8%BA%AB%E7%9A%84%E8%B0%83%E9%80%9F%E5%A4%B1%E6%95%88%E4%BA%86'
     },
     {
       title: 'The site\'s own speed control fails after enabling the plugin',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#the-site-s-own-speed-control-fails-after-enabling-the-plugin'
-    },
-    {
-      title: '为什么视频跟音频是分开下载的',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A7%86%E9%A2%91%E8%B7%9F%E9%9F%B3%E9%A2%91%E6%98%AF%E5%88%86%E5%BC%80%E4%B8%8B%E8%BD%BD%E7%9A%84'
     },
     {
       title: 'Why are video and audio downloaded separately?',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#why-are-video-and-audio-downloaded-separately'
-    },
-    {
-      title: '如何合并下载到的音视频文件',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E5%A6%82%E4%BD%95%E5%90%88%E5%B9%B6%E4%B8%8B%E8%BD%BD%E5%88%B0%E7%9A%84%E9%9F%B3%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6'
     },
     {
       title: 'How to merge downloaded audio and video files',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#how-to-merge-downloaded-audio-and-video-files'
-    },
-    {
-      title: '为什么视频截图不同网站表现不一致',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A7%86%E9%A2%91%E6%88%AA%E5%9B%BE%E4%B8%8D%E5%90%8C%E7%BD%91%E7%AB%99%E8%A1%A8%E7%8E%B0%E4%B8%8D%E4%B8%80%E8%87%B4'
     },
     {
       title: 'Why is video screenshot functionality inconsistent across websites?',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#why-is-video-screenshot-functionality-inconsistent-across-websites'
-    },
-    {
-      title: '如何禁用或自定义快捷键',
-      action: 'openDocsLink',
-      lang: ['zh'],
-      args: '/home/q&a#%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8%E6%88%96%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE'
     },
     {
       title: 'How to Disable or Customize Shortcut Keys',
       action: 'openDocsLink',
-      lang: ['en', 'ru'],
+      lang: ['en'],
       args: '/home/q&a#how-to-disable-or-customize-shortcut-keys'
     }
   ];
@@ -4555,7 +4501,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     }
   ];
 
-  /* menuConfig预处理函数，根据指定的参考dom元素，通过判断元素的宽度来决定是否只显示菜单的图标，以节省展示位置 */
+  /* menuConfig preprocessing function, based on the specified reference dom element, determines whether to display only the menu icon by judging the width of the element to save placement */
   function menuConfigPreprocess (menuConfig, refDom) {
     const refWidth = refDom.offsetWidth;
     const iconOnly = refWidth < 500;
@@ -4572,7 +4518,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     })
   }
 
-  /* 写个函数，支持将menuConfig.dropdownMenu的数据构建成sl-menu组件的template */
+  /* Write a function to support constructing the data of menuConfig.dropdownMenu into the template of the sl-menu component */
   function convertDropdownMenuToTemplate (dropdownMenu, isRootMenu = true) {
     const menuItems = dropdownMenu.map(item => {
       if (item.disabled) return ''
@@ -4606,7 +4552,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     return isRootMenu ? `<sl-menu>${menuItems}</sl-menu>` : menuItems
   }
 
-  /* 写一个函数可以将menuConfig转换成template进行输出 */
+  /* Write a function to convert menuConfig into template for output */
   function convertMenuConfigToTemplate (menuConfig) {
     return `
   <div class="h5p-action-mod">
@@ -4640,7 +4586,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
           `
         }
       }).join('')
-    } 
+    }
   </div>
   `
   }
@@ -4656,34 +4602,18 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
 
   const defaultRecommendList = [
     {
-      title: '【h5player】使用手册',
+      title: '【h5player】User Manual',
       url: 'https://u.anzz.top/h5pmanual',
       priority: 99,
-      i18n: {
-        en: {
-          title: '【h5player】User Manual'
-        }
-      }
     },
     {
-      title: '【h5player】音视频一键合并工具，无需二次编码',
-      desc: '将h5player下载到的音视频文件自动合并成一个文件，不经过二次编码，可快速合并',
+      title: '【h5player】Audio and video merge tool, no secondary coding required',
+          desc: 'Automatically merge the audio and video files downloaded by h5player into one file without secondary coding, which can be quickly merged',
       url: 'https://u.anzz.top/ffmpegscript',
-      i18n: {
-        en: {
-          title: '【h5player】Audio and video merge tool, no secondary coding required',
-          desc: 'Automatically merge the audio and video files downloaded by h5player into one file without secondary coding, which can be quickly merged'
-        }
-      }
     },
     {
-      title: '【Hello-AI】抢走你工作的不是AI，而是掌握使用AI工具的人',
+      title: '【Hello-AI】It\'s not AI that takes away your job, but the person who knows how to use AI tools',
       url: 'https://u.anzz.top/ai',
-      i18n: {
-        en: {
-          title: '【Hello-AI】It\'s not AI that takes away your job, but the person who knows how to use AI tools'
-        }
-      }
     }
   ];
 
@@ -4695,12 +4625,12 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     recommendList = recommendList.filter(item => !item.disabled);
 
     const curLang = i18n.language() || '';
-    /* 兼容各种可能的语言配置写法 */
+    /* Compatible with various possible language configuration writing methods */
     const curLang2 = curLang.replace('-', '');
     const curLang3 = curLang.replace('-', '_');
     const curLang4 = curLang.split('-')[0];
 
-    /* 根据当前的language和recommendList的languages配置过滤出符合当前语言的recommendList */
+    /* Filter out the recommended list for the language ​​configuration. */
     recommendList = recommendList.filter(item => {
       const lang = item.lang || item.language || item.languages;
       if (lang) {
@@ -4712,10 +4642,10 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
 
     if (!recommendList.length) { return '' }
 
-    /* 从recommendList里随机取5条数据，多余的不予以展示 */
+    /* Randomly select 5 pieces of data from the recommended list to display. */
     if (recommendList.length > 5) { recommendList = recommendList.sort(() => Math.random() - 0.5).slice(0, 5); }
 
-    /* 根据recommendList里的priority字段进行排序，priority值越大越靠前 */
+    /* Sort according to the priority field in the recommendation list. */
     recommendList = recommendList.sort((a, b) => (b.priority || 0) - (a.priority || 0));
 
     const recommendHtml = recommendList.map(item => {
@@ -4739,8 +4669,8 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
   }
 
   /**
-   * 注册Recommend切换逻辑，每4s检测一次当前哪个h5p-recommend-item上有h5p-recommend-item__active，然后将h5p-recommend-item__active切换到下一个元素，如此往复
-   * 当鼠标移动到recommendWrap的时候停止切换，移开后继续切换
+   *Register Recommend switching logic, detect which h5p-recommend-item currently has h5p-recommend-item__active every 4 seconds, and then switch h5p-recommend-item__active to the next element, and so on.
+   *Stop switching when the mouse moves to recommendedWrap, and continue switching after moving away.
    */
   function registerRecommendModToggle (recommendWrap, reRender) {
     if (!reRender && (!recommendWrap || recommendWrap.__h5pRecommendModRegistered__)) { return }
@@ -4775,14 +4705,14 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
   }
 
   /**
-   * 通过事件委托的方式处理菜单点击事件，减少事件绑定，提升性能
-   * @param { Event } event -必选 事件对象
+   *Handle menu click events through event delegation to reduce event binding and improve performance
+   *@param { Event } event -required event object
    */
   function menuActionHandler (obj) {
     const { event, h5Player, h5playerUI, videoElement, popup, actionCallback } = obj;
     const target = event.target;
 
-    /* 根据target查找是否包含data-action属性，注意这里可能需要使用closest来向上查找 */
+    /* Check whether the data-action attribute is included according to the target. Note that you may need to use closest to search upward */
     const actionDOM = target.closest('.h5p-menu-action');
     if (!actionDOM) {
       debug$1.log('[menuActionHandler]', '未找到actionDOM', event.target);
@@ -4811,7 +4741,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
 
       try {
         if (action === 'setPlaybackRate') {
-          /* 使用UI操作需强行跳过锁检测逻辑 */
+          /* Use UI operations to forcefully skip the lock detection logic */
           h5Player.setPlaybackRate(args, false, false, true);
         } else if (globalFunctional[action] && globalFunctional[action].fn instanceof Function) {
           globalFunctional[action].fn(args);
@@ -4854,7 +4784,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     if (popupWrapId) { removePopupWrapById(popupWrapId); }
   }
 
-  /* 遍历popupWrapObjs，如果popupWrapObjs中的element元素的offsetParent为null，则移除掉 */
+  /* Traverse popupWrapObjs, if the offsetParent of the element element in popupWrapObjs is null, remove it */
   function cleanPopupWrap () {
     const popupWrapIds = Object.keys(popupWrapObjs);
     popupWrapIds.forEach(popupWrapId => {
@@ -4886,7 +4816,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     async init () {
       debug.log('h5playerUI init');
 
-      /* 插入组件相关的样式 */
+      /* Insert component-related styles */
       document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
     },
 
@@ -4907,17 +4837,17 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
     popup (element, h5Player) {
       if (this.__disableGUITemporarily__ || element.__disableGUITemporarily__) { return false }
 
-      /* 如果element元素的宽高比大于2.5，说明可能为视频背景，则也不显示popup */
+      /* If the aspect ratio of the element element is greater than 2.5, it may be a video background, and the popup will not be displayed */
       if (element.videoWidth / element.videoHeight > 2.5) { return false }
 
-      /* 防止popup渲染过于频繁 */
+      /* Prevent popup from rendering too frequently */
       if (this.lastRenderedPopupTime && Date.now() - this.lastRenderedPopupTime < 100) {
         return false
       } else {
         this.lastRenderedPopupTime = Date.now();
       }
 
-      /* 防止popup死循环渲染 */
+      /* Prevent pop-up infinite loop rendering */
       if (element.__popupRenderedCount__ && element.__popupRenderedCount__ > 15) {
         return false
       } else {
@@ -4970,13 +4900,13 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
       const popup = popupWrap.querySelector('sl-popup');
 
       /**
-       * 判断popup初始化是否异常，油管上使用了custom-elements-es5-adapter.js，会导致popup异常，故有此判断
-       * 例如：https://www.youtube.com/watch?v=jsb-5H_hy0M
-       * 例如：https://www.youtube.com/watch?v=-2xb7rGCi2k
+       * Determine whether the popup initialization is abnormal. Custom elements es5 adapter.js is used on the oil pipe, which will cause the popup to be abnormal, so this judgment is made.
+       * For example：https://www.youtube.com/watch?v=jsb-5H_hy0M
+       * For example：https://www.youtube.com/watch?v=-2xb7rGCi2k
        */
       function checkPopupUpdateComplete () {
         if (!popup || !popup.updateComplete || !popup.updateComplete.then) {
-          // debug.error('[h5playerUI][popup][updateComplete], 组件初始化异常', popup, element)
+          //debug.error('[h5playerUI][popup][updateComplete], component initialization exception', popup, element)
           element.removeAttribute('data-popup-wrap-id');
           popupWrap.remove();
           delete popupWrapObjs[popupWrapId];
@@ -4986,7 +4916,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         return true
       }
 
-      /* 确保popup已经被渲染 */
+      /* Make sure the popup has been rendered */
       customElements.whenDefined('sl-popup').then(() => {
         if (!checkPopupUpdateComplete()) {
           return false
@@ -5000,7 +4930,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         });
       });
 
-      /* 重新渲染h5p-action-mod对应的菜单，以便更新菜单状态 */
+      /* Re-render the menu corresponding to the h5p action mod to update the menu status */
       function reRenderMenuMod () {
         const menuWrap = popupWrap.querySelector('.h5player-popup-content .h5p-menu-wrap');
         const actionMod = popupWrap.querySelector('.h5p-action-mod');
@@ -5010,14 +4940,14 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
           const newMenuTemplate = createMenuTemplate(menuConfigPreprocess(menuConfig, element));
           parseHTML(newMenuTemplate, menuWrap);
 
-          /* 图标加载失败时，移除图标元素 */
+          /* When the icon loading fails, remove the icon element */
           const slIcons = popupWrap.querySelectorAll('sl-icon');
           slIcons && slIcons.forEach(slIcon => {
             slIcon.addEventListener('sl-error', (event) => {
               const parent = event.target.parentElement;
               event.target.remove();
 
-              /* 改为只显示文字标题 */
+              /* Change to display only text title */
               if (parent.getAttribute('data-title')) {
                 parent.innerText = parent.getAttribute('data-title');
               }
@@ -5028,10 +4958,10 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         }
       }
 
-      /* 油管首次渲染会莫名其妙的出错，所以此处延迟一段时间重新渲染一次菜单 */
+      /* The first rendering of the oil pipe will be inexplicably wrong, so here is a delay for a while to re-render the menu */
       setTimeout(() => { reRenderMenuMod(); }, 400);
 
-      /* 重新渲染h5p-recommend-mod对应的推荐模块，如果位置不够则对隐藏该模块 */
+      /* Re-render the recommended module corresponding to h5p-recommend-mod, and hide the module if the location is not enough */
       function reRenderRecommendMod () {
         const recommendWrap = popupWrap.querySelector('.h5player-popup-content .h5p-recommend-wrap');
         const recommendMod = popupWrap.querySelector('.h5player-popup-content .h5p-recommend-wrap>div');
@@ -5051,12 +4981,12 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
       const alwaysShowUIBar = configManager.getGlobalStorage('ui.alwaysShow');
 
       /**
-       * 鼠标移动到popupWrap上时增加fullActiveClass的样式类，移出一段时间后再移除fullActiveClass的样式类
-       * 用于防止鼠标移动到popupWrap上时popupWrap被快速隐藏，以提示操作体验
+       *Add the style class of fullActiveClass when the mouse moves to the popupWrap, and then remove the style class of fullActiveClass after moving the mouse for a period of time.
+       *Used to prevent the popupWrap from being quickly hidden when the mouse moves over the popupWrap to prompt the operating experience
        */
       let mouseleaveTimer = null;
       popupWrap.addEventListener('mouseenter', () => {
-        /* 元素比例异常，不显示popup */
+        /* The element ratio is abnormal and the popup is not displayed */
         if (element.videoWidth / element.videoHeight > 2.5) {
           element.__disableGUITemporarily__ = true;
           removePopupWrapByElement(element);
@@ -5081,7 +5011,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
             !alwaysShowUIBar && !element.paused && popupWrap.classList.remove(activeClass);
             !alwaysShowUIBar && !element.paused && popupWrap.classList.remove(fullActiveClass);
 
-            /* 关闭popupWrap中的所有sl-dropdown */
+            /* Close all sl dropdowns in popup wrap */
             const dropdowns = popupWrap.querySelectorAll('sl-dropdown');
             dropdowns.forEach(dropdown => {
               dropdown._open_ = false;
@@ -5147,9 +5077,9 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         }
       }
 
-      /* 移动端下如果注册了mousemove会导致click没法触发，或者导致事件相互干扰，没法唤起sl-dropdown */
+      /* If mousemove is registered on the mobile terminal, click will not be triggered, or events will interfere with each other, and sl-dropdown will not be evoked */
       if (!device.isMobile()) {
-        /* 鼠标在popupWrap上移动时，如果检测到isOutOfDocument(element)也移除fullActiveClass的样式类，注意需加上debounce */
+        /* When the mouse moves on the popupWrap, if isOutOfDocument(element) is detected, the fullActiveClass style class will also be removed. Note that debounce must be added */
         let lastCheckIsOutOfDocumentTime = Date.now();
         popupWrap.addEventListener('mousemove', (event) => {
           const now = Date.now();
@@ -5231,7 +5161,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         }
       });
 
-      /* element切换播放状态时，如果是播放状态，则隐藏popup，否则显示popup */
+      /*When the element switches the playback state, if it is in the playback state, the popup will be hidden, otherwise the popup will be displayed */
       element.addEventListener('play', () => {
         if (alwaysShowUIBar) {
           popupWrap.classList.add(activeClass);
@@ -5276,7 +5206,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         cleanPopupWrap();
       });
 
-      /* element的播放进度发生变化时，执行一次popup.reposition() */
+      /* When the playback progress of element changes, execute popup.reposition() */
       let lastTimeupdateTime = Date.now();
       element.addEventListener('timeupdate', () => {
         const now = Date.now();
@@ -5286,7 +5216,7 @@ const h5playerUI = function (window) {var h5playerUI = (function () {
         }
       });
 
-      /* 尝试清除popupWrapObjs中的无效元素 */
+      /* Try to clear invalid elements in popupWrapObjs */
       cleanPopupWrap();
 
       // debug.log('[h5playerUI][popup]', popup, popupWrap, element)
