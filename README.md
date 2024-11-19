@@ -4,7 +4,7 @@ Web Player Enhancement Script
 
 - Official Website: [h5player.anzz.top](https://h5player.anzz.top)  
 - Official GitHub: [github.com/xxxily/h5player](https://github.com/xxxily/h5player)
-- This mod: [github.com/sami-gllogjani/h5player_mod](https://github.com/sami-gllogjani/h5player_mod)
+- This mod: [github.com/sg1-code/h5player_mod](https://github.com/sg1-code/h5player_mod)
 
 
 ## Introduction
